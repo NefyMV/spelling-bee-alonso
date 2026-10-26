@@ -1,0 +1,296 @@
+[
+  {
+    "audio": "audio01.mp3",
+    "word": "cheese",
+    "page": 22,
+    "guide": "si - eich - i - i - es - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio02.mp3",
+    "word": "crayon",
+    "page": 24,
+    "guide": "si - ar - ei - uai - ou - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio03.mp3",
+    "word": "carrot",
+    "page": 20,
+    "guide": "si - ei - ar - ar - ou - ti",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio04.mp3",
+    "word": "cereal",
+    "page": 21,
+    "guide": "si - i - ar - i - ei - el",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio05.mp3",
+    "word": "captain",
+    "page": 19,
+    "guide": "si - ei - pi - ti - ei - ai - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio06.mp3",
+    "word": "color",
+    "page": 23,
+    "guide": "si - ou - el - ou - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio07.mp3",
+    "word": "crown",
+    "page": 25,
+    "guide": "si - ar - ou - dabl iu - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio08.mp3",
+    "word": "evening",
+    "page": 37,
+    "guide": "i - vi - i - en - ai - en - yi",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio09.mp3",
+    "word": "eleven",
+    "page": 35,
+    "guide": "i - el - i - vi - i - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio10.mp3",
+    "word": "eagle",
+    "page": 32,
+    "guide": "i - ei - yi - el - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio11.mp3",
+    "word": "earth",
+    "page": 33,
+    "guide": "i - ei - ar - ti - eich",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio12.mp3",
+    "word": "eraser",
+    "page": 36,
+    "guide": "i - ar - ei - es - i - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio13.mp3",
+    "word": "exercise",
+    "page": 38,
+    "guide": "i - ex - i - ar - si - ai - es - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio14.mp3",
+    "word": "electric",
+    "page": 34,
+    "guide": "i - el - i - si - ti - ar - ai - si",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio15.mp3",
+    "word": "april",
+    "page": 7,
+    "guide": "ei - pi - ar - ai - el",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio16.mp3",
+    "word": "always",
+    "page": 5,
+    "guide": "ei - el - dabl iu - ei - uai - es",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio17.mp3",
+    "word": "alien",
+    "page": 4,
+    "guide": "ei - el - ai - i - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio18.mp3",
+    "word": "animal",
+    "page": 6,
+    "guide": "ei - en - ai - em - ei - el",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio19.mp3",
+    "word": "airport",
+    "page": 3,
+    "guide": "ei - ai - ar - pi - ou - ar - ti",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio20.mp3",
+    "word": "action",
+    "page": 1,
+    "guide": "ei - si - ti - ai - ou - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio21.mp3",
+    "word": "autumn",
+    "page": 8,
+    "guide": "ei - iu - ti - iu - em - en",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio22.mp3",
+    "word": "afraid",
+    "page": 2,
+    "guide": "ei - ef - ar - ei - ai - di",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio23.mp3",
+    "word": "drink",
+    "page": 31,
+    "guide": "di - ar - ai - en - kei",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio24.mp3",
+    "word": "doctor",
+    "page": 29,
+    "guide": "di - ou - si - ti - ou - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio25.mp3",
+    "word": "dress",
+    "page": 30,
+    "guide": "di - ar - i - es - es",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio26.mp3",
+    "word": "dinner",
+    "page": 28,
+    "guide": "di - ai - en - en - i - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio27.mp3",
+    "word": "dance",
+    "page": 26,
+    "guide": "di - ei - en - si - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio28.mp3",
+    "word": "dark",
+    "page": 27,
+    "guide": "di - ei - ar - kei",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio29.mp3",
+    "word": "body",
+    "page": 15,
+    "guide": "bi - ou - di - uai",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio30.mp3",
+    "word": "brush",
+    "page": 18,
+    "guide": "bi - ar - iu - es - eich",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio31.mp3",
+    "word": "banana",
+    "page": 10,
+    "guide": "bi - ei - en - ei - en - ei",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio32.mp3",
+    "word": "baby",
+    "page": 9,
+    "guide": "bi - ei - bi - uai",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio33.mp3",
+    "word": "bath",
+    "page": 11,
+    "guide": "bi - ei - ti - eich",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio34.mp3",
+    "word": "before",
+    "page": 12,
+    "guide": "bi - i - ef - ou - ar - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio35.mp3",
+    "word": "bottle",
+    "page": 16,
+    "guide": "bi - ou - ti - ti - el - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio36.mp3",
+    "word": "black",
+    "page": 14,
+    "guide": "bi - el - ei - si - kei",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio37.mp3",
+    "word": "brave",
+    "page": 17,
+    "guide": "bi - ar - ei - vi - i",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio38.mp3",
+    "word": "bigger",
+    "page": 13,
+    "guide": "bi - ai - yi - yi - i - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio39.mp3",
+    "word": "fast",
+    "page": 40,
+    "guide": "ef - ei - es - ti",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio40.mp3",
+    "word": "farmer",
+    "page": 39,
+    "guide": "ef - ei - ar - em - i - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio41.mp3",
+    "word": "father",
+    "page": 41,
+    "guide": "ef - ei - ti - eich - i - ar",
+    "status": "Palabra y página cotejadas visualmente"
+  },
+  {
+    "audio": "audio42.mp3",
+    "word": "future",
+    "page": 42,
+    "guide": "ef - iu - ti - iu - ar - i",
+    "status": "Palabra y página cotejadas visualmente"
+  }
+]

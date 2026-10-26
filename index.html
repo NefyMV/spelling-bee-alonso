@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#152e62">
+<title>Spelling Bee de Alonso</title>
+<style>
+:root{--navy:#152e62;--blue:#2e67d1;--sky:#eaf2ff;--gold:#ffcc4d;--ink:#1d2940;--muted:#65728a;--paper:#fff;--bg:#f4f7fc;--green:#18794e;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:linear-gradient(135deg,#152e62,#2457ae);color:#fff;padding:26px 18px 22px;text-align:center}
+.brand{display:inline-flex;align-items:center;gap:10px}.bee{font-size:2.2rem}.brand h1{font-size:clamp(1.5rem,4vw,2.35rem);margin:0;line-height:1.15}.sub{margin:8px 0 0;color:#e2ebff}
+main{max-width:980px;margin:20px auto;padding:0 14px 36px}.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.pill{border-radius:999px;background:#e3ebfb;color:var(--navy);padding:7px 12px;font-size:.88rem;font-weight:700}
+nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+button,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:12px 14px;font-weight:750;transition:transform .08s,filter .15s}button:active{transform:scale(.98)}button:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.tab{background:#e5ebf5;color:#31415e}.tab.active{background:var(--navy);color:white}
+.panel{background:var(--paper);border:1px solid #e0e7f2;border-radius:20px;padding:clamp(17px,4vw,30px);box-shadow:0 8px 28px #172f5810}
+h2{margin:0 0 8px;font-size:1.45rem}.desc{color:var(--muted);margin:0 0 20px;line-height:1.5}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:18px}.toolbar select{border:1px solid #ccd6e6;border-radius:10px;padding:10px;background:#fff;color:var(--ink)}
+.word-card{background:linear-gradient(180deg,#f7faff,#fff);border:1px solid #dbe6f7;border-radius:18px;padding:24px 16px;text-align:center;min-height:175px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.word{font-size:clamp(2rem,8vw,3.4rem);font-weight:850;letter-spacing:.04em;color:var(--navy);overflow-wrap:anywhere}.hidden-word{font-size:1.1rem;color:var(--muted);letter-spacing:normal;font-weight:600}.meta{color:var(--muted);font-size:.9rem;margin-top:8px}
+.guide{margin-top:12px;padding:12px 14px;background:#fff6d9;border:1px solid #f3df98;border-radius:12px;line-height:1.6}.guide strong{color:#694c00}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.primary{background:var(--blue);color:#fff}.dark{background:var(--navy);color:#fff}.soft{background:var(--sky);color:var(--navy)}.gold{background:var(--gold);color:#352800}.success{background:#e6f6ed;color:var(--green)}.danger{background:#fff0ee;color:var(--red)}button:disabled{opacity:.45;cursor:not-allowed}
+.feedback{margin-top:14px;border-radius:12px;padding:12px 14px;background:#f1f4f9;color:#34435b}.feedback.good{background:#e7f7ed;color:#12643f}.feedback.bad{background:#fff0ee;color:#a1251b}
+.progress{height:8px;background:#e4eaf3;border-radius:999px;overflow:hidden;margin:12px 0 18px}.progress>div{height:100%;background:var(--gold);width:0%;transition:width .2s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}.stat{padding:13px;background:#f4f7fc;border-radius:13px;text-align:center}.stat b{display:block;font-size:1.4rem;color:var(--navy)}.stat span{font-size:.8rem;color:var(--muted)}
+.list{margin-top:14px;display:grid;gap:8px}.item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 12px;border:1px solid #e1e7f0;border-radius:12px}.item .left{min-width:0}.item .left b{display:block}.item small{color:var(--muted)}.tiny{padding:8px 10px;border-radius:9px}
+.hidden{display:none!important}.footer{text-align:center;color:var(--muted);font-size:.82rem;margin-top:18px}.empty{text-align:center;padding:26px;color:var(--muted)}
+@media(max-width:600px){nav{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(3,1fr)}.panel{border-radius:16px}.actions button{flex:1 1 42%}.item{align-items:flex-start}.topline{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="bee" aria-hidden="true">🐝</span><h1>Spelling Bee de Alonso</h1></div><p class="sub">Escucha · Deletrea · ¡Aprende!</p></header>
+<main>
+  <div class="topline"><span class="pill" id="countPill">42 palabras con audio</span><span class="pill" id="savedPill">Progreso guardado en este dispositivo</span></div>
+  <nav aria-label="Modos de estudio">
+    <button class="tab active" data-mode="learn">📘 Aprender</button>
+    <button class="tab" data-mode="practice">✏️ Practicar</button>
+    <button class="tab" data-mode="bee">🏆 Concurso</button>
+    <button class="tab" data-mode="review">🔁 Repasar errores</button>
+  </nav>
+  <section class="panel" id="learnPanel">
+    <h2>Aprender palabras</h2><p class="desc">Escucha la grabación original de la maestra y estudia la palabra junto con la guía de deletreo de tu catálogo.</p>
+    <div class="toolbar"><label for="learnSelect">Palabra:</label><select id="learnSelect"></select><button class="soft" id="shuffleLearn">🎲 Elegir al azar</button></div>
+    <div class="word-card"><div class="word" id="learnWord">—</div><div class="meta" id="learnMeta"></div><div class="guide"><strong>Guía para decir los nombres de las letras:</strong><div id="learnGuide">—</div></div></div>
+    <div class="actions"><button class="primary" id="learnAudio">🔊 Escuchar audio</button><button class="dark" id="learnSpell">Mostrar letras una por una</button><button class="soft" id="learnNext">Siguiente palabra →</button></div>
+    <div class="feedback hidden" id="spellReveal" aria-live="polite"></div>
+  </section>
+  <section class="panel hidden" id="practicePanel">
+    <h2>Práctica</h2><p class="desc">Escucha el audio, di la palabra y deletrea en voz alta. Después revela la respuesta para comprobar cómo te fue.</p>
+    <div class="progress"><div id="practiceProgress"></div></div>
+    <div class="word-card"><div class="hidden-word" id="practicePrompt">Pulsa “Escuchar palabra” y responde en voz alta.</div><div class="word hidden" id="practiceAnswer"></div><div class="meta" id="practiceMeta"></div></div>
+    <div class="actions"><button class="primary" id="practiceAudio">🔊 Escuchar palabra</button><button class="gold" id="practiceReveal">👀 Revelar respuesta</button><button class="success" id="practiceCorrect">✓ La sabía</button><button class="danger" id="practiceWrong">↻ Necesito practicar</button><button class="soft" id="practiceNext">Siguiente →</button></div>
+    <div class="feedback hidden" id="practiceFeedback" aria-live="polite"></div>
+  </section>
+  <section class="panel hidden" id="beePanel">
+    <h2>Simulación de concurso</h2><p class="desc">Como en el concurso: escucha la palabra, repítela, deletrea cada letra en voz alta y di la palabra al final. La app no muestra la palabra hasta que tú o tu familia decidan revelarla.</p>
+    <div class="stats"><div class="stat"><b id="beeRound">0/10</b><span>Ronda</span></div><div class="stat"><b id="beeGood">0</b><span>Correctas</span></div><div class="stat"><b id="beeMiss">0</b><span>Para repasar</span></div></div>
+    <div class="progress"><div id="beeProgress"></div></div>
+    <div class="word-card"><div class="hidden-word" id="beePrompt">Pulsa “Iniciar concurso” para comenzar.</div><div class="word hidden" id="beeAnswer"></div><div class="meta" id="beeMeta">La palabra permanece oculta durante la respuesta.</div></div>
+    <div class="actions"><button class="primary" id="beeStart">🏁 Iniciar concurso de 10 palabras</button><button class="soft" id="beeAudio" disabled>🔊 Repetir audio</button><button class="gold" id="beeReveal" disabled>👀 Revelar respuesta</button><button class="success" id="beeCorrect" disabled>✓ Correcta</button><button class="danger" id="beeWrong" disabled>✗ Incorrecta</button><button class="soft" id="beeNext" disabled>Siguiente →</button></div>
+    <div class="feedback hidden" id="beeFeedback" aria-live="polite"></div>
+  </section>
+  <section class="panel hidden" id="reviewPanel">
+    <h2>Repasar errores</h2><p class="desc">Aquí aparecen las palabras que marcaste como difíciles o incorrectas. El registro se guarda en este navegador.</p>
+    <div class="stats"><div class="stat"><b id="reviewCount">0</b><span>Palabras pendientes</span></div><div class="stat"><b id="reviewAttempts">0</b><span>Intentos marcados</span></div><div class="stat"><b id="reviewMastered">0</b><span>Marcadas como dominadas</span></div></div>
+    <div class="actions"><button class="primary" id="reviewPractice" disabled>Practicar lista de errores</button><button class="soft" id="clearReview">Limpiar lista de errores</button></div>
+    <div class="list" id="reviewList"></div>
+  </section>
+  <p class="footer">Primera versión · Usa los audios originales incluidos. Para agregar palabras, actualiza <code>words.json</code> y coloca el audio en <code>audios/</code>.</p>
+</main>
+<script>
+let WORDS = [];
+let mode = 'learn', learnIndex = 0, practiceIndex = 0, practiceDeck = [], beeDeck = [], beeIndex = 0, beeScore = 0, beeMiss = 0, beeMarked = false, beeDone = false;
+let errors = load('spellingBeeErrors', {}), attempts = load('spellingBeeAttempts', 0), mastered = load('spellingBeeMastered', {});
+const $ = id => document.getElementById(id);
+function load(k, fallback){try{return JSON.parse(localStorage.getItem(k)) ?? fallback}catch(e){return fallback}}
+function save(){localStorage.setItem('spellingBeeErrors',JSON.stringify(errors));localStorage.setItem('spellingBeeAttempts',JSON.stringify(attempts));localStorage.setItem('spellingBeeMastered',JSON.stringify(mastered))}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function current(deck,index){return deck[index] || WORDS[0]}
+function setMode(m){mode=m;document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));['learn','practice','bee','review'].forEach(x=>$(x+'Panel').classList.toggle('hidden',x!==m));if(m==='review')renderReview()}
+function audioPath(w){return 'audios/'+w.audio}
+function play(w){if(!w)return;const a=new Audio(audioPath(w));a.play().catch(()=>alert('No se pudo reproducir el audio. Comprueba que el archivo '+w.audio+' esté dentro de la carpeta audios.'))}
+function guide(w){return w.guide || 'Guía pendiente de agregar.'}
+function fillSelect(){ $('learnSelect').innerHTML=WORDS.map((w,i)=>`<option value="${i}">${esc(w.word)}</option>`).join('')}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderLearn(){let w=WORDS[learnIndex];$('learnSelect').value=learnIndex;$('learnWord').textContent=w.word;$('learnMeta').textContent=`Palabra ${learnIndex+1} de ${WORDS.length} · Página ${w.page ?? 'pendiente'} del cuadernillo`;$('learnGuide').textContent=guide(w);$('spellReveal').classList.add('hidden');$('spellReveal').textContent=''}
+function nextLearn(){learnIndex=(learnIndex+1)%WORDS.length;renderLearn()}
+function newPractice(){practiceDeck=shuffle(WORDS);practiceIndex=0;renderPractice()}
+function renderPractice(){let w=current(practiceDeck,practiceIndex);$('practicePrompt').textContent='Escucha y responde en voz alta.';$('practiceAnswer').textContent=w.word;$('practiceAnswer').classList.add('hidden');$('practiceMeta').textContent=`Palabra ${practiceIndex+1} de ${practiceDeck.length}`;$('practiceProgress').style.width=((practiceIndex)/Math.max(1,practiceDeck.length)*100)+'%';$('practiceFeedback').classList.add('hidden')}
+function mark(w,correct){attempts++;if(correct){delete errors[w.word];mastered[w.word]=true}else{errors[w.word]=(errors[w.word]||0)+1;delete mastered[w.word]}save();renderReview();const box=$('practiceFeedback');box.className='feedback '+(correct?'good':'bad');box.textContent=correct?'¡Muy bien! La quitamos de la lista de errores.':'La agregamos a tu lista para practicar otra vez.'}
+function nextPractice(){practiceIndex++;if(practiceIndex>=practiceDeck.length)newPractice();else renderPractice()}
+function startBee(){beeDeck=shuffle(WORDS).slice(0,Math.min(10,WORDS.length));beeIndex=0;beeScore=0;beeMiss=0;beeMarked=false;beeDone=false;renderBee();$('beeAudio').disabled=false;$('beeReveal').disabled=false;$('beeStart').textContent='↻ Reiniciar concurso';play(current(beeDeck,beeIndex))}
+function renderBee(){let w=current(beeDeck,beeIndex);let active=beeDeck.length>0&&!beeDone;$('beeRound').textContent=active?`${beeIndex+1}/${beeDeck.length}`:`${beeDeck.length?beeDeck.length:0}/10`;$('beeGood').textContent=beeScore;$('beeMiss').textContent=beeMiss;$('beeProgress').style.width=(beeDeck.length?beeIndex/beeDeck.length*100:0)+'%';$('beePrompt').textContent=active?'Escucha, repite, deletrea y di la palabra al final.':(beeDone?'¡Concurso terminado!':'Pulsa “Iniciar concurso” para comenzar.');$('beeAnswer').textContent=active?w.word:'';$('beeAnswer').classList.add('hidden');$('beeMeta').textContent=active?'La palabra permanece oculta durante la respuesta.':(beeDone?`Resultado: ${beeScore} correctas de ${beeDeck.length}.`:'La palabra permanece oculta durante la respuesta.');$('beeCorrect').disabled=!active||beeMarked;$('beeWrong').disabled=!active||beeMarked;$('beeNext').disabled=!active||!beeMarked;$('beeAudio').disabled=!active;$('beeReveal').disabled=!active;$('beeFeedback').classList.add('hidden')}
+function beeMark(ok){if(beeMarked||beeDone)return;beeMarked=true;const w=current(beeDeck,beeIndex);attempts++;if(ok){beeScore++;delete errors[w.word];mastered[w.word]=true}else{beeMiss++;errors[w.word]=(errors[w.word]||0)+1;delete mastered[w.word]}save();renderReview();renderBee();const b=$('beeFeedback');b.className='feedback '+(ok?'good':'bad');b.textContent=ok?'¡Correcto!':'La palabra se guardó para repasar.';b.classList.remove('hidden')}
+function beeNext(){if(!beeMarked)return;beeIndex++;if(beeIndex>=beeDeck.length){beeDone=true;renderBee();$('beeStart').textContent='↻ Intentar de nuevo';const b=$('beeFeedback');b.className='feedback';b.textContent=`Concurso terminado: ${beeScore} correctas y ${beeMiss} para repasar.`;b.classList.remove('hidden');return}beeMarked=false;renderBee();play(current(beeDeck,beeIndex))}
+function renderReview(){const list=Object.keys(errors).filter(k=>WORDS.some(w=>w.word===k));$('reviewCount').textContent=list.length;$('reviewAttempts').textContent=attempts;$('reviewMastered').textContent=Object.keys(mastered).length;$('reviewPractice').disabled=!list.length;const el=$('reviewList');if(!list.length){el.innerHTML='<div class="empty">🎉 ¡No hay palabras pendientes! Marca como incorrectas las que quieras volver a estudiar.</div>';return}el.innerHTML=list.map(k=>{const w=WORDS.find(x=>x.word===k);return `<div class="item"><div class="left"><b>${esc(w.word)}</b><small>${errors[k]} intento(s) para repasar · ${esc(guide(w))}</small></div><div class="actions" style="margin:0"><button class="soft tiny" data-audio="${esc(k)}">🔊</button><button class="success tiny" data-master="${esc(k)}">Ya la sé</button></div></div>`}).join('');el.querySelectorAll('[data-audio]').forEach(b=>b.onclick=()=>play(WORDS.find(w=>w.word===b.dataset.audio)));el.querySelectorAll('[data-master]').forEach(b=>b.onclick=()=>{delete errors[b.dataset.master];mastered[b.dataset.master]=true;save();renderReview()})}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+$('learnSelect').addEventListener('change',e=>{learnIndex=Number(e.target.value);renderLearn()});
+$('shuffleLearn').onclick=()=>{learnIndex=Math.floor(Math.random()*WORDS.length);renderLearn()};
+$('learnAudio').onclick=()=>play(WORDS[learnIndex]);$('learnNext').onclick=nextLearn;
+$('learnSpell').onclick=()=>{let w=WORDS[learnIndex];$('spellReveal').textContent=w.word.toUpperCase().split('').join(' · ');$('spellReveal').classList.remove('hidden')};
+$('practiceAudio').onclick=()=>play(current(practiceDeck,practiceIndex));
+$('practiceReveal').onclick=()=>{$('practiceAnswer').classList.remove('hidden');$('practicePrompt').textContent='Respuesta:'};
+$('practiceCorrect').onclick=()=>{mark(current(practiceDeck,practiceIndex),true)};
+$('practiceWrong').onclick=()=>{mark(current(practiceDeck,practiceIndex),false)};
+$('practiceNext').onclick=nextPractice;
+$('beeStart').onclick=startBee;$('beeAudio').onclick=()=>play(current(beeDeck,beeIndex));$('beeReveal').onclick=()=>$('beeAnswer').classList.remove('hidden');$('beeCorrect').onclick=()=>beeMark(true);$('beeWrong').onclick=()=>beeMark(false);$('beeNext').onclick=beeNext;
+$('reviewPractice').onclick=()=>{const list=Object.keys(errors).filter(k=>WORDS.some(w=>w.word===k));practiceDeck=shuffle(list.map(k=>WORDS.find(w=>w.word===k)));practiceIndex=0;if(practiceDeck.length){renderPractice();setMode('practice')}};
+$('clearReview').onclick=()=>{if(confirm('¿Limpiar la lista de errores? Las estadísticas de intentos se conservarán.')){errors={};save();renderReview()}};
+async function init(){try{const r=await fetch('words.json');if(!r.ok)throw new Error('No se pudo cargar words.json');const raw=await r.json();WORDS=raw.map(x=>({audio:x.audio,word:x.word,page:x.page,guide:x.guide,status:x.status}));if(!WORDS.length)throw new Error('No hay palabras en el catálogo');$('countPill').textContent=`${WORDS.length} palabras con audio`;fillSelect();learnIndex=0;renderLearn();newPractice();renderReview();}catch(e){document.querySelector('main').innerHTML='<section class="panel"><h2>No se pudo cargar el catálogo</h2><p>Abre esta app desde GitHub Pages o desde un servidor local; no abras index.html directamente como archivo.</p><p>'+esc(e.message)+'</p></section>'}}
+init();
+</script>
+</body>
+</html>
